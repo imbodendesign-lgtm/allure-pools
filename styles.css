@@ -941,20 +941,6 @@ button {
   font-weight: 600;
 }
 
-.footer-referral {
-  background: rgba(201, 168, 76, 0.12);
-  border: 1px solid rgba(201, 168, 76, 0.4);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  margin-top: 12px;
-  font-size: 0.88rem;
-  color: var(--gold-light);
-}
-
-.footer-referral strong {
-  color: var(--gold);
-}
-
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding: 22px 0;
