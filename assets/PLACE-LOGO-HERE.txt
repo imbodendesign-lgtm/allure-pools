@@ -1,0 +1,21 @@
+SAVE THE LOGO HERE
+==================
+
+Every page of the site loads the logo from:
+
+    assets/logo.png
+
+To finish the branding, save the Allure Pools logo image you have
+into THIS folder with the exact filename:
+
+    logo.png
+
+Tips:
+- A transparent-background PNG looks best (the header sits on white;
+  the footer puts it on a white badge automatically).
+- Recommended width: ~800px (the source you provided is perfect).
+- If you ever rename it, update the <img src="assets/logo.png"> tags
+  in all five .html files to match.
+
+Once logo.png is in this folder, every page shows the real logo.
+You can delete this text file afterward.

@@ -28,7 +28,13 @@ A complete, production-ready, fully static multi-page website for **Allure Pools
 - Mobile-first responsive CSS (breakpoints at 640px / 900px / 1200px)
 - Vanilla JS (no dependencies)
 - Google Fonts: Cormorant Garamond (headings) + Montserrat (body)
-- Inline SVG logo embedded in every header/footer
+- Real brand logo loaded from `assets/logo.png` in every header/footer
+
+## ⚠️ One step to finish branding
+
+Save the Allure Pools logo image into the `assets/` folder as **`logo.png`**
+(see `assets/PLACE-LOGO-HERE.txt`). Until then, the header/footer show the
+image's alt text instead of the logo.
 
 ## Local preview
 
