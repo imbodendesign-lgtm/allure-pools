@@ -224,7 +224,7 @@ button {
 
 .logo-link svg,
 .logo-link .logo-img {
-  height: 56px;
+  height: 66px;
   width: auto;
   display: block;
 }
@@ -894,13 +894,13 @@ button {
 .footer-brand .logo-badge {
   display: inline-block;
   background: var(--white);
-  padding: 12px 16px;
+  padding: 14px 18px;
   border-radius: var(--radius-lg);
   margin-bottom: 18px;
 }
 
 .footer-brand .logo-badge img {
-  height: 58px;
+  height: 84px;
   width: auto;
   display: block;
 }
@@ -1053,5 +1053,5 @@ button {
   .hero-ctas .btn { width: 100%; }
   .header-phone span.ph-text { display: none; }
   .logo-link svg,
-  .logo-link .logo-img { height: 42px; }
+  .logo-link .logo-img { height: 52px; }
 }
