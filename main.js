@@ -202,6 +202,50 @@
       document.addEventListener('mouseout', function (e) { if (e.target.closest && e.target.closest(interactiveSel)) ring.classList.remove('cursor-grow'); });
     }
 
+    /* ===================== Image lightbox ===================== */
+    (function () {
+      var medias = Array.prototype.slice.call(document.querySelectorAll('.svc__media, .gallery-item'));
+      if (!medias.length) return;
+      var expandIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+      var items = [];
+      medias.forEach(function (m) {
+        var img = m.querySelector('img'); if (!img) return;
+        var badge = document.createElement('span'); badge.className = 'svc__expand'; badge.innerHTML = expandIcon; m.appendChild(badge);
+        var idx = items.length;
+        items.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
+        m.addEventListener('click', function () { openLb(idx); });
+      });
+
+      var lb = document.createElement('div'); lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-hidden', 'true');
+      lb.innerHTML =
+        '<button class="lightbox__close" aria-label="Close">&times;</button>' +
+        '<button class="lightbox__nav prev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>' +
+        '<img alt="">' +
+        '<button class="lightbox__nav next" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>' +
+        '<div class="lightbox__cap"></div>';
+      body.appendChild(lb);
+      var lbImg = lb.querySelector('img'); var lbCap = lb.querySelector('.lightbox__cap'); var cur = 0;
+
+      function render() { lbImg.src = items[cur].src; lbImg.alt = items[cur].alt; lbCap.textContent = items[cur].alt; }
+      function openLb(i) { cur = i; render(); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); body.style.overflow = 'hidden'; }
+      function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); body.style.overflow = ''; }
+      function go(d) { cur = (cur + d + items.length) % items.length; render(); }
+
+      lb.querySelector('.lightbox__close').addEventListener('click', closeLb);
+      lb.querySelector('.prev').addEventListener('click', function (e) { e.stopPropagation(); go(-1); });
+      lb.querySelector('.next').addEventListener('click', function (e) { e.stopPropagation(); go(1); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLb();
+        else if (e.key === 'ArrowLeft') go(-1);
+        else if (e.key === 'ArrowRight') go(1);
+      });
+      var sx = 0;
+      lb.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; }, { passive: true });
+      lb.addEventListener('touchend', function (e) { var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1); });
+    })();
+
     /* ===================== Multi-step contact wizard ===================== */
     var wizard = document.getElementById('contact-wizard');
     if (wizard) {
