@@ -133,6 +133,13 @@
         var payload = {};
         new FormData(form).forEach(function (value, key) { payload[key] = value; });
 
+        // Smart subject so the lead's name + area show in the inbox at a glance,
+        // and reply-to set to the customer so Douglas can reply with one tap.
+        var leadName = payload['Name'] || 'Website Visitor';
+        var leadArea = payload['Service Area'] ? ' (' + payload['Service Area'] + ')' : '';
+        payload.subject = 'New Pool Quote Request — ' + leadName + leadArea;
+        if (payload['Email']) { payload.replyto = payload['Email']; }
+
         fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
