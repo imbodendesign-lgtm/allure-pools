@@ -53,6 +53,7 @@
 
     /* ===================== Mobile nav ===================== */
     var header = document.querySelector('.site-header');
+    var mobileBar = document.querySelector('.mobile-bar');
     var lastY = window.scrollY;
     var toggle = document.querySelector('.nav-toggle');
     var nav = document.querySelector('.main-nav');
@@ -154,6 +155,10 @@
         }
       }
       lastY = y;
+      if (mobileBar) {
+        var blocked = body.style.overflow === 'hidden';
+        mobileBar.classList.toggle('show', y > 480 && !blocked);
+      }
       if (reduceMotion || !hero) return;
       var h = hero.offsetHeight || 1; var p = Math.min(Math.max(y / h, 0), 1);
       if (heroContent) { heroContent.style.transform = 'translate3d(0,' + (p * 70) + 'px,0)'; heroContent.style.opacity = String(1 - p * 1.05); }

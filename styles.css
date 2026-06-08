@@ -754,3 +754,60 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .cursor-ring.cursor-grow { width: 64px; height: 64px; background: rgba(201,168,76,0.12); border-color: var(--gold); }
 @media (prefers-reduced-motion: reduce) { .cursor-dot, .cursor-ring { display: none !important; } .cursor-on { cursor: auto; } }
+
+/* ===================================================================
+   Mobile / touch interactions (iOS + Android)
+   =================================================================== */
+/* remove 300ms tap delay on controls */
+a, button, .opt, summary, label, input, select, textarea { touch-action: manipulation; }
+
+/* tap-press feedback (fires on touch where there's no hover) */
+.btn:active { transform: scale(0.96) !important; }
+.opt:active { transform: scale(0.97); }
+.card:active, .review-card:active, .index-item:active, .service-card:active { transform: scale(0.99); }
+.gallery-item:active img { transform: scale(1.05); }
+.header-phone:active, .card-link:active { opacity: 0.7; }
+
+/* gallery: captions + scrim always visible on touch (no hover) */
+@media (hover: none) {
+  .gallery-item::after { opacity: 1; }
+  .gallery-item figcaption { opacity: 1; }
+}
+
+/* staggered slide-in of mobile nav links */
+@media (max-width: 900px) {
+  .main-nav li { opacity: 0; transform: translateX(26px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+  .main-nav.open li { opacity: 1; transform: none; }
+  .main-nav.open li:nth-child(1) { transition-delay: .10s; }
+  .main-nav.open li:nth-child(2) { transition-delay: .16s; }
+  .main-nav.open li:nth-child(3) { transition-delay: .22s; }
+  .main-nav.open li:nth-child(4) { transition-delay: .28s; }
+  .main-nav.open li:nth-child(5) { transition-delay: .34s; }
+}
+
+/* sticky mobile call / quote bar */
+.mobile-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; display: none;
+  gap: 1px; background: var(--line);
+  transform: translateY(115%); transition: transform .5s var(--ease);
+  box-shadow: 0 -10px 30px -16px rgba(13,27,62,0.4);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.mobile-bar.show { transform: none; }
+.mobile-bar__btn {
+  flex: 1; text-align: center; padding: 17px 12px;
+  font-family: var(--font-body); font-weight: 600; font-size: 0.72rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.mobile-bar__btn svg { width: 15px; height: 15px; }
+.mobile-bar__call { background: var(--navy); color: #fff; }
+.mobile-bar__call:active { background: #0a1430; }
+.mobile-bar__quote { background: var(--gold); color: var(--navy); }
+.mobile-bar__quote:active { background: var(--gold-deep); }
+@media (max-width: 760px) { .mobile-bar { display: flex; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-bar { transition: none; }
+  .main-nav li { opacity: 1; transform: none; transition: none; }
+}
