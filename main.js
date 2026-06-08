@@ -106,18 +106,53 @@
       revealEls.forEach(function (el) { el.classList.add('visible'); });
     }
 
-    /* ---------- Contact form (front-end demo handler) ---------- */
+    /* ---------- Contact form -> Web3Forms (real submission) ---------- */
     var form = document.querySelector('#contact-form');
     if (form) {
+      var status = document.querySelector('#form-status');
+      var submitBtn = form.querySelector('button[type="submit"]');
+
+      function setStatus(msg, color) {
+        if (!status) return;
+        status.textContent = msg;
+        status.style.color = color;
+      }
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var status = document.querySelector('#form-status');
-        if (status) {
-          status.textContent =
-            'Thank you! Your message is ready — please call Douglas at 702-483-8424 to confirm, or we will reach out shortly.';
-          status.style.color = '#1A2F6A';
+
+        // Native required-field validation
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
         }
-        form.reset();
+
+        if (submitBtn) { submitBtn.disabled = true; }
+        setStatus('Sending your request…', '#6B7A99');
+
+        var payload = {};
+        new FormData(form).forEach(function (value, key) { payload[key] = value; });
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (json) {
+            if (json && json.success) {
+              setStatus('Thank you! Your request has been sent — Douglas will be in touch shortly. Prefer to talk now? Call 702-483-8424.', '#1A2F6A');
+              form.reset();
+            } else {
+              setStatus('Sorry, something went wrong sending your message. Please call Douglas directly at 702-483-8424.', '#b00020');
+            }
+          })
+          .catch(function () {
+            setStatus('Network error — please call Douglas at 702-483-8424 and we\'ll take care of you.', '#b00020');
+          })
+          .finally(function () {
+            if (submitBtn) { submitBtn.disabled = false; }
+          });
       });
     }
   });

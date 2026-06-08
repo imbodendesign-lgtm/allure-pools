@@ -69,7 +69,11 @@
           <div class="form-wrap reveal">
             <h2 style="font-size:1.8rem;margin-bottom:8px;">Request a Free Quote</h2>
             <p style="color:var(--text-muted);margin-bottom:24px;">Tell us about your pool and we'll get right back to you.</p>
-            <form id="contact-form" novalidate>
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+              <input type="hidden" name="subject" value="New quote request — Allure Pools website">
+              <input type="hidden" name="from_name" value="Allure Pools Website">
+              <input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="form-row">
                 <div class="field">
                   <label for="name">Name</label>
