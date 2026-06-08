@@ -140,7 +140,7 @@
         payload.subject = 'New Pool Quote Request — ' + leadName + leadArea;
         if (payload['Email']) { payload.replyto = payload['Email']; }
 
-        fetch('https://api.web3forms.com/submit', {
+        fetch('https://allure-pools-api.vercel.app/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(payload)
