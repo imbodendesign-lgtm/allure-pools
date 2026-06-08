@@ -157,7 +157,8 @@
       lastY = y;
       if (mobileBar) {
         var blocked = body.style.overflow === 'hidden';
-        mobileBar.classList.toggle('show', y > 480 && !blocked);
+        var onMobile = window.innerWidth <= 760;
+        mobileBar.classList.toggle('show', !blocked && (onMobile || y > 480));
       }
       if (reduceMotion || !hero) return;
       var h = hero.offsetHeight || 1; var p = Math.min(Math.max(y / h, 0), 1);
@@ -298,6 +299,11 @@
       if (!suppressed()) {
         setTimeout(function () { openModal(); }, 22000);
         document.addEventListener('mouseout', function (e) { if (e.clientY <= 0 && !e.relatedTarget) openModal(); });
+        var depthFired = false;
+        window.addEventListener('scroll', function () {
+          if (depthFired || suppressed()) return;
+          if ((window.scrollY + window.innerHeight) / document.body.scrollHeight > 0.6) { depthFired = true; openModal(); }
+        }, { passive: true });
       }
       var mForm = document.getElementById('quote-modal-form');
       if (mForm) {

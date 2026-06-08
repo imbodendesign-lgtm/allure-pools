@@ -967,3 +967,5 @@ a, button, .opt, summary, label, input, select, textarea { touch-action: manipul
 .svc-card__rule { width: 30px; height: 2px; background: var(--gold); margin: 13px 0 15px; transition: width .55s var(--ease); }
 .svc-card:hover .svc-card__rule { width: 56px; }
 @media (max-width: 560px) { .svc-card__view { opacity: 1; transform: none; } }
+/* keep content clear of the always-on mobile CTA bar */
+@media (max-width: 760px) { body { padding-bottom: calc(58px + env(safe-area-inset-bottom)); } }
