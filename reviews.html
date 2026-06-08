@@ -102,17 +102,29 @@
 
   <main>
     <!-- ===================== PAGE HERO ===================== -->
-    <section class="page-hero">
+    <section class="page-hero page-hero--photo" style="background-image:url('assets/work-4.jpg')">
       <div class="container">
-        <h1>Customer Reviews</h1>
+        <span class="eyebrow">Trusted Locally</span>
+        <h1>Customer <em>Reviews</em></h1>
         <p>Trusted across the Las Vegas valley.</p>
       </div>
     </section>
 
-    <!-- ===================== REVIEW GRID ===================== -->
-    <section class="section">
+    <!-- ===================== RATING HEADER ===================== -->
+    <section class="section section--tight" style="text-align:center;">
       <div class="container">
-        <div class="grid grid-3">
+        <div class="rating-hero reveal">
+          <div class="rating-hero__score"><span data-count="5" data-suffix=".0">5.0</span></div>
+          <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p class="rating-hero__sub">Rated five stars by <strong data-count="6">6</strong> happy clients across Henderson, Las Vegas, Summerlin &amp; Boulder City.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== REVIEW GRID ===================== -->
+    <section class="section" style="padding-top:0;">
+      <div class="container">
+        <div class="grid grid-3" data-stagger>
           <article class="review-card reveal">
             <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
             <p class="review-text">"Douglas is incredible. My pool has never looked better. Highly recommend for anyone in Henderson."</p>

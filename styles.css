@@ -884,3 +884,12 @@ a, button, .opt, summary, label, input, select, textarea { touch-action: manipul
 .lightbox__nav.prev { left: 18px; } .lightbox__nav.next { right: 18px; }
 @media (max-width: 640px) { .lightbox__nav { display: none; } }
 @media (prefers-reduced-motion: reduce) { .lightbox img, .lightbox { transition: none; } .lightbox img { transform: none; } }
+
+/* ===================================================================
+   Reviews — animated aggregate rating header
+   =================================================================== */
+.rating-hero { max-width: 640px; margin: 0 auto; }
+.rating-hero__score { font-family: var(--font-display); font-weight: 600; font-size: clamp(4rem, 12vw, 7rem); line-height: 1; color: var(--navy); }
+.rating-hero .stars { color: var(--gold); font-size: 1.5rem; letter-spacing: 6px; margin: 10px 0 18px; }
+.rating-hero__sub { color: var(--text-muted); font-size: 1.05rem; }
+.rating-hero__sub strong { color: var(--gold-deep); font-weight: 600; }
