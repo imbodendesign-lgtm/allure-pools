@@ -67,8 +67,12 @@
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "6", "bestRating": "5" }
   }
   </script>
+  <link rel="icon" href="/assets/favicon.png" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header">
@@ -94,7 +98,7 @@
   </header>
   <div class="nav-backdrop" aria-hidden="true"></div>
 
-  <main>
+  <main id="main" tabindex="-1">
     <!-- ===================== HERO ===================== -->
     <section class="hero">
       <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-pool.jpg" aria-hidden="true">

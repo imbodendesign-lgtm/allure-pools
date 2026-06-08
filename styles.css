@@ -969,3 +969,7 @@ a, button, .opt, summary, label, input, select, textarea { touch-action: manipul
 @media (max-width: 560px) { .svc-card__view { opacity: 1; transform: none; } }
 /* keep content clear of the always-on mobile CTA bar */
 @media (max-width: 760px) { body { padding-bottom: calc(58px + env(safe-area-inset-bottom)); } }
+
+/* skip-to-content (accessibility) */
+.skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; background: var(--navy); color: #fff; padding: 12px 22px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; border-radius: 0 0 var(--radius) 0; }
+.skip-link:focus { left: 0; }
