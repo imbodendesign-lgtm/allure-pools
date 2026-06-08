@@ -973,3 +973,6 @@ a, button, .opt, summary, label, input, select, textarea { touch-action: manipul
 /* skip-to-content (accessibility) */
 .skip-link { position: absolute; left: -9999px; top: 0; z-index: 1000; background: var(--navy); color: #fff; padding: 12px 22px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; border-radius: 0 0 var(--radius) 0; }
 .skip-link:focus { left: 0; }
+
+/* footer business name */
+.footer-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: 10px; letter-spacing: 0.01em; }
