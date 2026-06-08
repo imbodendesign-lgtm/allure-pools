@@ -917,3 +917,35 @@ a, button, .opt, summary, label, input, select, textarea { touch-action: manipul
 .svc-card__body p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; flex-grow: 1; }
 @media (max-width: 900px) { .svc-cards { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .svc-cards { grid-template-columns: 1fr; } }
+
+/* ===================================================================
+   Home — hero trust line, How It Works, closing CTA band
+   =================================================================== */
+.hero-trust {
+  margin-top: 30px; font-size: 0.8rem; letter-spacing: 0.03em;
+  color: rgba(255,255,255,0.85); display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap;
+}
+.hero-trust .stars { color: var(--gold); letter-spacing: 2px; font-size: 0.95rem; }
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 56px); }
+.step { text-align: center; padding: 0 clamp(6px, 2vw, 22px); position: relative; }
+.step__num {
+  display: block; font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(2.6rem, 5vw, 3.6rem); color: var(--gold); line-height: 1; margin-bottom: 14px;
+}
+.step h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.step p { color: var(--text-muted); font-size: 0.96rem; line-height: 1.7; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
+
+.cta-band {
+  position: relative; background-color: var(--navy); background-size: cover; background-position: center;
+  color: #fff; text-align: center; padding: clamp(90px, 14vw, 160px) 0; overflow: hidden;
+}
+.cta-band::before { content: ""; position: absolute; inset: 0; background: linear-gradient(rgba(13,27,62,0.78), rgba(13,27,62,0.88)); }
+.cta-band .container { position: relative; }
+.cta-band .eyebrow { color: var(--gold-light); justify-content: center; }
+.cta-band h2 { color: #fff; font-size: clamp(2.2rem, 5.5vw, 4rem); line-height: 1.06; margin-bottom: 32px; max-width: 20ch; margin-inline: auto; }
+.cta-band h2 em { font-style: italic; color: var(--gold-light); }
+.cta-band__btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 560px) { .cta-band__btns { flex-direction: column; } .cta-band__btns .btn { width: 100%; } }
