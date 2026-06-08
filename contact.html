@@ -6,13 +6,13 @@
   <title>Contact & Free Quote | Allure Pools Service & Repair — Henderson & Las Vegas NV</title>
   <meta name="description" content="Request a free pool service quote from Allure Pools. Serving Henderson, Las Vegas, Summerlin & Boulder City. Call Douglas at 702-483-8424 or email allurepools@gmail.com. Mon–Fri 8AM–5PM.">
   <meta name="keywords" content="pool service quote Las Vegas, contact pool service Henderson NV, free pool quote Summerlin, weekly pool service Boulder City">
-  <link rel="canonical" href="https://allurepoolslv.com/contact.html">
+  <link rel="canonical" href="https://allurepoolslv.com/contact">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Contact & Free Quote | Allure Pools Service & Repair">
   <meta property="og:description" content="Get a free quote for weekly pool service across the Las Vegas valley. Call Douglas: 702-483-8424.">
   <meta property="og:image" content="https://allurepoolslv.com/assets/work-2.jpg">
-  <meta property="og:url" content="https://allurepoolslv.com/contact.html">
+  <meta property="og:url" content="https://allurepoolslv.com/contact">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,16 +74,16 @@
   <!-- ===================== HEADER ===================== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo-link" aria-label="Allure Pools home"><img src="assets/logo.jpg" alt="Allure Pools Service & Repair logo" class="logo-img">
+      <a href="/" class="logo-link" aria-label="Allure Pools home"><img src="assets/logo.jpg" alt="Allure Pools Service & Repair logo" class="logo-img">
       </a>
 
       <nav class="main-nav" aria-label="Primary">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="reviews.html">Reviews</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/reviews">Reviews</a></li>
+          <li><a href="/contact" class="active">Contact</a></li>
         </ul>
       </nav>
 
@@ -114,58 +114,57 @@
       <div class="container">
         <div class="contact-layout">
 
-          <!-- Form -->
+          <!-- Interactive multi-step quote wizard -->
           <div class="form-wrap reveal">
-            <h2 style="font-size:1.8rem;margin-bottom:8px;">Request a Free Quote</h2>
-            <p style="color:var(--text-muted);margin-bottom:24px;">Tell us about your pool and we'll get right back to you.</p>
-            <form id="contact-form" action="https://allure-pools-api.vercel.app/api/contact" method="POST" novalidate>
-              <input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
-              <div class="form-row">
-                <div class="field">
-                  <label for="name">Name</label>
-                  <input type="text" id="name" name="Name" autocomplete="name" required>
+            <div class="wizard" id="contact-wizard">
+              <div class="wizard__progress"><span class="wizard__bar"></span></div>
+              <div class="wizard__steps">
+
+                <div class="wizard__step" data-step="1">
+                  <span class="wizard__count">Step 1 of 3</span>
+                  <h2>Where's your pool?</h2>
+                  <div class="optgrid" data-field="Service Area">
+                    <button type="button" class="opt" data-value="Henderson">Henderson</button>
+                    <button type="button" class="opt" data-value="Las Vegas">Las Vegas</button>
+                    <button type="button" class="opt" data-value="Summerlin">Summerlin</button>
+                    <button type="button" class="opt" data-value="Boulder City">Boulder City</button>
+                    <button type="button" class="opt" data-value="Other">Somewhere else</button>
+                  </div>
+                  <div class="wizard__nav"><span></span><button type="button" class="btn btn-primary" data-next disabled>Continue</button></div>
                 </div>
-                <div class="field">
-                  <label for="phone">Phone</label>
-                  <input type="tel" id="phone" name="Phone" autocomplete="tel" required>
+
+                <div class="wizard__step" data-step="2">
+                  <span class="wizard__count">Step 2 of 3</span>
+                  <h2>What do you need?</h2>
+                  <div class="optgrid" data-field="Service Requested">
+                    <button type="button" class="opt" data-value="Regular Pool Maintenance ($160/mo)">Weekly Maintenance</button>
+                    <button type="button" class="opt" data-value="Filter Cleaning ($75)">Filter Cleaning</button>
+                    <button type="button" class="opt" data-value="Acid Wash / Calcium Wash">Acid / Calcium Wash</button>
+                    <button type="button" class="opt" data-value="Replastering">Replastering</button>
+                    <button type="button" class="opt" data-value="Chemical Services">Chemical Services</button>
+                    <button type="button" class="opt" data-value="Not sure — need advice">Not sure yet</button>
+                  </div>
+                  <div class="wizard__nav"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="button" class="btn btn-primary" data-next disabled>Continue</button></div>
                 </div>
+
+                <form id="contact-form" class="wizard__step" data-step="3" action="https://allure-pools-api.vercel.app/api/contact" method="POST" novalidate>
+                  <span class="wizard__count">Step 3 of 3</span>
+                  <h2>Where can Douglas reach you?</h2>
+                  <input type="checkbox" name="botcheck" style="display:none !important" tabindex="-1" autocomplete="off" aria-hidden="true">
+                  <input type="hidden" name="Service Area">
+                  <input type="hidden" name="Service Requested">
+                  <div class="form-row">
+                    <div class="field"><label for="name">Name</label><input type="text" id="name" name="Name" autocomplete="name" required></div>
+                    <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="Phone" autocomplete="tel" required></div>
+                  </div>
+                  <div class="field"><label for="email">Email</label><input type="email" id="email" name="Email" autocomplete="email" required></div>
+                  <div class="field"><label for="message">Anything else? <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--text-muted);">(optional)</span></label><textarea id="message" name="Message" placeholder="Tell us a little about your pool…"></textarea></div>
+                  <div class="wizard__nav"><button type="button" class="btn btn-outline" data-prev>Back</button><button type="submit" class="btn btn-primary">Send Request</button></div>
+                  <p id="form-status" class="form-note" role="status" aria-live="polite"></p>
+                </form>
+
               </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="Email" autocomplete="email" required>
-              </div>
-              <div class="form-row">
-                <div class="field">
-                  <label for="area">Service Area</label>
-                  <select id="area" name="Service Area" required>
-                    <option value="" selected disabled>Select an area…</option>
-                    <option>Henderson</option>
-                    <option>Las Vegas</option>
-                    <option>Summerlin</option>
-                    <option>Boulder City</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="service">Service Interested In</label>
-                  <select id="service" name="Service Requested" required>
-                    <option value="" selected disabled>Select a service…</option>
-                    <option>Regular Pool Maintenance ($160/mo)</option>
-                    <option>Filter Cleaning ($75)</option>
-                    <option>Acid Wash / Calcium Wash</option>
-                    <option>Replastering</option>
-                    <option>Chemical Services</option>
-                    <option>Not sure — need advice</option>
-                  </select>
-                </div>
-              </div>
-              <div class="field">
-                <label for="message">Message</label>
-                <textarea id="message" name="Message" placeholder="Tell us a little about your pool…"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Send Message</button>
-              <p id="form-status" class="form-note" role="status" aria-live="polite"></p>
-            </form>
+            </div>
           </div>
 
           <!-- Info cards -->
@@ -232,11 +231,11 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/reviews">Reviews</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">

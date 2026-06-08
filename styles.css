@@ -677,3 +677,80 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
 .faq summary:hover { color: var(--gold-deep); }
 .faq .faq-a { padding: 0 48px 30px 0; color: var(--text-muted); font-size: 1.02rem; line-height: 1.8; }
+
+/* ===================================================================
+   Quote pop-up modal
+   =================================================================== */
+.quote-modal {
+  position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center;
+  padding: 20px; opacity: 0; visibility: hidden; transition: opacity .5s var(--ease), visibility .5s;
+}
+.quote-modal.open { opacity: 1; visibility: visible; }
+.quote-modal__backdrop { position: absolute; inset: 0; background: rgba(13,27,62,0.62); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+.quote-modal__card {
+  position: relative; z-index: 1; width: min(880px, 100%); background: var(--white);
+  border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 0.82fr 1fr;
+  box-shadow: 0 50px 120px -40px rgba(13,27,62,0.7);
+  transform: translateY(26px) scale(0.96); transition: transform .6s var(--ease); max-height: 92vh;
+}
+.quote-modal.open .quote-modal__card { transform: none; }
+.quote-modal__media { background: url('assets/work-3.jpg') center/cover no-repeat; position: relative; min-height: 240px; }
+.quote-modal__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(155deg, rgba(13,27,62,0.18), rgba(13,27,62,0.55)); }
+.quote-modal__body { padding: clamp(30px, 4vw, 46px); overflow-y: auto; }
+.quote-modal__body h3 { font-size: clamp(1.7rem, 3vw, 2.3rem); margin-bottom: 10px; }
+.quote-modal__body p { color: var(--text-muted); margin-bottom: 22px; font-size: 0.98rem; }
+.quote-modal__form { display: flex; flex-direction: column; gap: 12px; }
+.quote-modal__form input, .quote-modal__form select {
+  font-family: var(--font-body); font-size: 0.96rem; padding: 14px 16px; border: 1px solid var(--line);
+  border-radius: var(--radius); background: var(--paper); color: var(--navy); transition: var(--transition);
+}
+.quote-modal__form input:focus, .quote-modal__form select:focus { outline: none; border-color: var(--gold); background: #fff; box-shadow: 0 0 0 3px rgba(201,168,76,0.14); }
+.quote-modal__form .btn { margin-top: 4px; }
+.quote-modal__close {
+  position: absolute; top: 14px; right: 16px; z-index: 3; font-size: 1.6rem; line-height: 1; color: #fff;
+  width: 40px; height: 40px; border-radius: 50%; background: rgba(13,27,62,0.4); transition: var(--transition);
+  display: flex; align-items: center; justify-content: center;
+}
+.quote-modal__close:hover { background: var(--navy); transform: rotate(90deg); }
+.quote-modal__call { display: inline-block; margin-top: 18px; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
+.quote-modal__call:hover { color: var(--navy); }
+@media (max-width: 720px) { .quote-modal__card { grid-template-columns: 1fr; } .quote-modal__media { display: none; } }
+
+/* ===================================================================
+   Multi-step contact wizard
+   =================================================================== */
+.wizard__progress { height: 3px; background: var(--line); border-radius: 2px; overflow: hidden; margin-bottom: 30px; }
+.wizard__bar { display: block; height: 100%; background: var(--gold); width: 33%; transition: width .55s var(--ease); }
+.wizard__steps { position: relative; }
+.wizard__step { display: none; }
+.wizard__step.is-active { display: block; animation: wizIn .55s var(--ease); }
+@keyframes wizIn { from { opacity: 0; transform: translateX(26px); } to { opacity: 1; transform: none; } }
+.wizard__count { font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; }
+.wizard__step h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); margin: 10px 0 24px; }
+.optgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 30px; }
+.opt {
+  text-align: left; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--paper); font-family: var(--font-body); font-weight: 600; font-size: 0.92rem;
+  color: var(--navy); cursor: pointer; transition: var(--transition); position: relative;
+}
+.opt:hover { border-color: var(--gold); transform: translateY(-2px); }
+.opt.selected { border-color: var(--gold); background: #fff; box-shadow: inset 0 0 0 1.5px var(--gold); }
+.opt.selected::after { content: "\2713"; position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--gold-deep); font-weight: 700; }
+.wizard__nav { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.wizard__nav .btn[disabled] { opacity: 0.4; pointer-events: none; }
+@media (max-width: 520px) { .optgrid { grid-template-columns: 1fr; } }
+
+/* ===================================================================
+   Custom cursor (desktop, pointer:fine only)
+   =================================================================== */
+.cursor-on { cursor: none; }
+.cursor-on a, .cursor-on button, .cursor-on .opt, .cursor-on input,
+.cursor-on select, .cursor-on textarea, .cursor-on summary, .cursor-on label { cursor: none; }
+.cursor-dot, .cursor-ring { position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; border-radius: 50%; opacity: 0; }
+.cursor-dot { width: 7px; height: 7px; background: var(--gold); }
+.cursor-ring {
+  width: 38px; height: 38px; border: 1.5px solid rgba(201,168,76,0.75); background: rgba(201,168,76,0);
+  transition: width .3s var(--ease), height .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease), opacity .35s;
+}
+.cursor-ring.cursor-grow { width: 64px; height: 64px; background: rgba(201,168,76,0.12); border-color: var(--gold); }
+@media (prefers-reduced-motion: reduce) { .cursor-dot, .cursor-ring { display: none !important; } .cursor-on { cursor: auto; } }

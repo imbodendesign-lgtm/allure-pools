@@ -6,13 +6,13 @@
   <title>About Douglas Nandi | 20+ Years of Trusted Pool Service — Allure Pools Henderson NV</title>
   <meta name="description" content="Meet Douglas Nandi, owner of Allure Pools Service & Repair. Originally from Kenya, father of five, with 20+ years caring for pools across Henderson, Las Vegas, Summerlin & Boulder City. Call 702-483-8424.">
   <meta name="keywords" content="Douglas Nandi pool service, Allure Pools owner, pool service Henderson NV, trusted pool service Las Vegas, owner operated pool service">
-  <link rel="canonical" href="https://allurepoolslv.com/about.html">
+  <link rel="canonical" href="https://allurepoolslv.com/about">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="About Douglas Nandi | Allure Pools Service & Repair">
   <meta property="og:description" content="20+ years. One standard — yours. Meet the owner-operator behind Las Vegas's most trusted pool service.">
   <meta property="og:image" content="https://allurepoolslv.com/assets/work-2.jpg">
-  <meta property="og:url" content="https://allurepoolslv.com/about.html">
+  <meta property="og:url" content="https://allurepoolslv.com/about">
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,16 +74,16 @@
   <!-- ===================== HEADER ===================== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo-link" aria-label="Allure Pools home"><img src="assets/logo.jpg" alt="Allure Pools Service & Repair logo" class="logo-img">
+      <a href="/" class="logo-link" aria-label="Allure Pools home"><img src="assets/logo.jpg" alt="Allure Pools Service & Repair logo" class="logo-img">
       </a>
 
       <nav class="main-nav" aria-label="Primary">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="about.html" class="active">About</a></li>
-          <li><a href="reviews.html">Reviews</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/about" class="active">About</a></li>
+          <li><a href="/reviews">Reviews</a></li>
+          <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -162,11 +162,11 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/reviews">Reviews</a></li>
+            <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -197,5 +197,30 @@
   </footer>
 
   <script src="main.js"></script>
+  <!-- ===================== QUOTE POP-UP ===================== -->
+  <div class="quote-modal" id="quote-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Request a free pool service quote">
+    <div class="quote-modal__backdrop" data-close></div>
+    <div class="quote-modal__card">
+      <button class="quote-modal__close" data-close aria-label="Close">&times;</button>
+      <div class="quote-modal__media" aria-hidden="true"></div>
+      <div class="quote-modal__body">
+        <span class="eyebrow">Free Quote · No Obligation</span>
+        <h3>Ready for a flawless pool?</h3>
+        <p>Leave your details and Douglas will reach out — usually the same day.</p>
+        <form id="quote-modal-form" class="quote-modal__form" novalidate>
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+          <input type="text" name="Name" placeholder="Your name" autocomplete="name" required>
+          <input type="tel" name="Phone" placeholder="Phone number" autocomplete="tel" required>
+          <select name="Service Area" required>
+            <option value="" selected disabled>Where's your pool?</option>
+            <option>Henderson</option><option>Las Vegas</option><option>Summerlin</option><option>Boulder City</option><option>Other</option>
+          </select>
+          <button type="submit" class="btn btn-primary btn-lg">Get My Free Quote</button>
+          <p class="form-note" id="quote-modal-status" role="status" aria-live="polite"></p>
+        </form>
+        <a href="tel:+17024838424" class="quote-modal__call">Or call now · 702-483-8424</a>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
