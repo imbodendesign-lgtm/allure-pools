@@ -977,13 +977,6 @@ a, button, .opt, summary, label, input, select, textarea { touch-action: manipul
 /* footer business name */
 .footer-name { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: #fff; margin-bottom: 10px; letter-spacing: 0.01em; }
 
-/* enlarge the business name in the hero so it reads clearly */
-.hero .eyebrow {
-  font-size: clamp(1rem, 2.6vw, 1.5rem);
-  letter-spacing: 0.14em;
-  font-weight: 700;
-  margin-bottom: 26px;
-  color: var(--gold-light);
-}
-.hero .eyebrow::before, .hero .eyebrow::after { width: 28px; }
-@media (max-width: 560px) { .hero .eyebrow { font-size: 1.05rem; gap: 10px; } .hero .eyebrow::before, .hero .eyebrow::after { width: 18px; } }
+/* hero kicker (cities) — small, gold-light */
+.hero .eyebrow { color: var(--gold-light); }
+@media (max-width: 560px) { .hero .eyebrow { gap: 8px; } .hero .eyebrow::before, .hero .eyebrow::after { width: 18px; } }
